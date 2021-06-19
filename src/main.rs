@@ -9,7 +9,5 @@ const FILE: &str = r#"@a @b
 "#;
 
 fn main() {
-    if let Err(e) = lib::run(FILE) {
-        eprintln!("{}", e);
-    }
+    lib::repl::exec();
 }

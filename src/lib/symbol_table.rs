@@ -41,4 +41,29 @@ impl SymbolTable {
 
         Err(format!("Undefined identifier '{}'", identifier))
     }
+
+    pub fn get(&self, index: usize) -> f64 {
+        self.entries[index].1
+    }
+
+    pub fn set(&mut self, index: usize, value: f64) {
+        self.entries[index].1 = value;
+    }
+
+    pub fn iter(&self) -> std::slice::Iter<(String, f64)> {
+        self.entries.iter()
+    }
+
+    pub fn print(&self) {
+        if self.entries.is_empty() {
+            println!("No variables assigned yet");
+            return;
+        }
+
+        println!("Variables: ");
+
+        for variable in self.iter() {
+            println!("{}: {}", variable.0, variable.1);
+        }
+    }
 }
